@@ -13,7 +13,7 @@ export default function Page({ children }: PageProps) {
       <div className="flex flex-col w-screen min-h-screen">
         <Topbar />
         <div className="flex flex-col h-full overflow-auto scrollbar-hide justify-between items-center ">
-          <div className="flex flex-1 min-h-fit h-fit py-8 px-2 sm:px-4 max-w-4xl">
+          <div className="flex flex-1 min-h-fit h-fit pt-8 pb-16 px-2 sm:px-4 max-w-4xl">
             {children}
           </div>
           <Footer />

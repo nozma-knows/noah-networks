@@ -15,9 +15,11 @@ const buttonLabel = "Check out my blog";
 function Message() {
   return (
     <div className="flex w-fit h-fit flex-col gap-2 max-w-3xl">
-      <h1>{title}</h1>
+      <h1 className="w-fit text-transparent bg-gradient-to-r from-white/80 to-white/40 bg-clip-text ">
+        {title}
+      </h1>
       <h2>{subtitle}</h2>
-      <div className="text-lg">{about}</div>
+      <div className="">{about}</div>
     </div>
   );
 }

@@ -29,9 +29,6 @@ export default function LinkButton({
       whileTap={{ ...(!disabled && { scale: 0.95 }) }}
     >
       <Link
-        // className={`${className} flex justify-center p-4 px-6 rounded-lg bg-white/40 drop-shadow-lg ${
-        //   disabled && "cursor-not-allowed opacity-50"
-        // }`}
         className={
           className !== undefined
             ? `${className}`

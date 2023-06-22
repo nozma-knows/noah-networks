@@ -38,7 +38,13 @@ function Links() {
   return (
     <div className="flex gap-12 pt-8 text-4xl sm:text-5xl justify-center">
       {links.map(({ label, href }, index) => (
-        <LinkButton key={index} href={href} label={label} newTab className="" />
+        <LinkButton
+          key={index}
+          href={href}
+          label={label}
+          newTab
+          className="text-5xl"
+        />
       ))}
     </div>
   );

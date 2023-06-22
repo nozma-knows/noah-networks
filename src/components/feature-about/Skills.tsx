@@ -45,9 +45,8 @@ export default function Skills() {
       <h2>{title}</h2>
       <Grid container spacing={4}>
         {skills.map(({ title, items }, index) => (
-          <Grid key={index} item xs={6}>
+          <Grid key={index} item xs={12} sm={12} md={6}>
             <div>
-              {/* <div className="text-xl font-bold text-green">{title}</div> */}
               <h3>{title}</h3>
               <div className="text-lg">{items.join(", ")}</div>
             </div>

@@ -16,8 +16,8 @@ module.exports = {
         lilita: ["Lilita One", "cursive"],
       },
       colors: {
-        white: "#FFF",
         green: "#64B6AC",
+        blue: "#173F5F",
       },
     },
   },
