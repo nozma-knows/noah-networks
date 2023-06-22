@@ -14,6 +14,7 @@ import { useEffect, useRef } from "react";
 import useWindowSize from "@/components/utils/hooks/useWindowSize";
 import { MenuToggle } from "@/components/ui/buttons/MenuToggle";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const title = `Noah Networks`;
 const altText = `Noah Networks Logo`;
@@ -76,6 +77,7 @@ export default function Topbar() {
   const scope = useMenuAnimation(isOpen);
   const containerRef = useRef(null);
   const { width } = useWindowSize();
+  const currentPath = usePathname();
 
   useEffect(() => {
     if (width > 768 && isOpen) {
@@ -93,7 +95,7 @@ export default function Topbar() {
       >
         <Logo Icon={logo} text={title} altText={altText} />
         <div className="hidden md:flex">
-          <Tabs tabs={tabs} />
+          <Tabs tabs={tabs} currentPath={currentPath} />
         </div>
         <div className="flex md:hidden">
           {!noTabs && (
@@ -103,13 +105,14 @@ export default function Topbar() {
               </div>
               <div ref={scope} className={`${isOpen && "overlay"}`}>
                 <ul
-                  className="bg-white absolute top-0 right-0 z-40 h-full w-60 flex flex-col px-8 py-20"
+                  className="bg-white/20 absolute top-0 right-0 z-40 h-full w-60 flex flex-col px-8 py-20 backdrop-blur-md"
                   style={{
                     pointerEvents: isOpen ? "auto" : "none",
                     clipPath: "inset(10% 50% 90% 50% round 10px)",
                   }}
                 >
                   {tabs.map(({ label, link }, index) => {
+                    const onPath = link === currentPath; // True if tab corresponds to current path
                     return (
                       <li id="item" key={index} className="list-none">
                         <Link href={link}>
@@ -122,7 +125,9 @@ export default function Topbar() {
                               scale: 0.95,
                             }}
                           >
-                            <div className="text-black">{label}</div>
+                            <div className={`${onPath && "text-green"}`}>
+                              {label}
+                            </div>
                           </motion.div>
                         </Link>
                       </li>

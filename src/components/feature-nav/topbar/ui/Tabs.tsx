@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -12,10 +11,10 @@ export type TabType = {
 
 interface TabsProps {
   tabs: TabType[];
+  currentPath: string;
 }
 
-export default function Tabs({ tabs }: TabsProps) {
-  const currentPath = usePathname();
+export default function Tabs({ tabs, currentPath }: TabsProps) {
   return (
     <div className="flex gap-2">
       {tabs.map(({ label, link, className }) => {
