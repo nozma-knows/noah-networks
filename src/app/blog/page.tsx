@@ -1,5 +1,10 @@
 import Page from "@/components/ui/pages/Page";
 
+export const metadata = {
+  title: "Noah Networks | Blog",
+  description: "Noah Networks blog page.",
+};
+
 export default function Blog() {
   return (
     <Page>

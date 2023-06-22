@@ -15,8 +15,8 @@ import useWindowSize from "@/components/utils/hooks/useWindowSize";
 import { MenuToggle } from "@/components/ui/buttons/MenuToggle";
 import Link from "next/link";
 
-const title = `Milbo LLC`;
-const altText = `Milbo LLC logo`;
+const title = `Noah Networks`;
+const altText = `Noah Networks Logo`;
 const tabs = [
   {
     label: "About",
@@ -86,7 +86,7 @@ export default function Topbar() {
   return (
     <LayoutGroup>
       <motion.nav
-        className="flex w-full justify-between items-center sticky top-0 p-6 backdrop-blur-lg backdrop-brightness-[0.4]"
+        className="flex w-full justify-between items-center p-6 bg-transparent"
         initial={false}
         animate={isOpen ? "open" : "closed"}
         ref={containerRef}

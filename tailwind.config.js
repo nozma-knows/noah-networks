@@ -6,10 +6,6 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      white: "#FFF",
-      green: "#64B6AC",
-    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -18,6 +14,10 @@ module.exports = {
       },
       fontFamily: {
         lilita: ["Lilita One", "cursive"],
+      },
+      colors: {
+        white: "#FFF",
+        green: "#64B6AC",
       },
     },
   },

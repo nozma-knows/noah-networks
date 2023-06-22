@@ -1,7 +1,10 @@
-"use client";
-
 import Page from "@/components/ui/pages/Page";
 import { Header, Skills } from "@/components/feature-about";
+
+export const metadata = {
+  title: "Noah Networks | About",
+  description: "Noah Networks about page.",
+};
 
 // Experience Content
 const experiences = [
