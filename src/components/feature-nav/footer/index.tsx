@@ -61,8 +61,8 @@ const Links = () => {
 
 const Copyright = () => {
   return (
-    <div className="flex gap-2">
-      <div className="hidden md:flex">{message}</div>
+    <div className="flex flex-col text-center sm:flex-row gap-0 sm:gap-2">
+      <div>{message}</div>
       <div>{crYear}</div>
     </div>
   );
@@ -70,7 +70,7 @@ const Copyright = () => {
 
 export default function Footer() {
   return (
-    <div className="flex w-full justify-center items-center text-xs sm:text-sm md:text-md font-bold px-6 pb-4">
+    <div className="flex w-full justify-center items-center text-xs sm:text-sm md:text-md font-bold px-6 pb-4 self-end">
       <Copyright />
     </div>
   );

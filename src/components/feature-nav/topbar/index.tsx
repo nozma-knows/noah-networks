@@ -1,6 +1,6 @@
 "use client";
 
-import milboLogo from "@/assets/logo.svg";
+import logo from "@/assets/logo.svg";
 import Logo from "@/components/ui/icons/Logo";
 import Tabs from "./ui/Tabs";
 import {
@@ -15,8 +15,8 @@ import useWindowSize from "@/components/utils/hooks/useWindowSize";
 import { MenuToggle } from "@/components/ui/buttons/MenuToggle";
 import Link from "next/link";
 
-const title = "Noah Networks";
-const altText = "Noah Networks logo";
+const title = `Milbo LLC`;
+const altText = `Milbo LLC logo`;
 const tabs = [
   {
     label: "About",
@@ -30,7 +30,6 @@ const tabs = [
     label: "Blog",
     link: "/blog",
   },
-
   {
     label: "Contact",
     link: "/contact",
@@ -87,12 +86,12 @@ export default function Topbar() {
   return (
     <LayoutGroup>
       <motion.nav
-        className="flex w-full justify-between items-center p-6"
+        className="flex w-full justify-between items-center sticky top-0 p-6 backdrop-blur-lg backdrop-brightness-[0.4]"
         initial={false}
         animate={isOpen ? "open" : "closed"}
         ref={containerRef}
       >
-        <Logo Icon={milboLogo} text={title} altText={altText} />
+        <Logo Icon={logo} text={title} altText={altText} />
         <div className="hidden md:flex">
           <Tabs tabs={tabs} />
         </div>
@@ -134,6 +133,8 @@ export default function Topbar() {
             </>
           )}
         </div>
+
+        {/* </div> */}
       </motion.nav>
     </LayoutGroup>
   );

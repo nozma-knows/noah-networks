@@ -1,0 +1,4 @@
+.background {
+    background: radial-gradient(at bottom right, rgba(100, 182, 172, 0.2), transparent 40%),
+                black;
+}
