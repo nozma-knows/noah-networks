@@ -1,11 +1,11 @@
 "use client";
-
-import LinkButton from "@/components/ui/buttons/LinkButton";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import BackButton from "@/components/ui/buttons/BackButton";
+
+// Content
+const backButtonLabel = `Back to blog`;
+const backButtonLink = `/blog`;
 
 interface Link {
   label: JSX.Element;
@@ -17,44 +17,33 @@ interface LinksProps {
 }
 interface BlogHeaderProps {
   title: string;
-  links: Link[];
-  description: string;
-}
-
-function Links({ links }: LinksProps) {
-  return (
-    <div className="flex gap-12 pt-8 justify-center">
-      {links.map(({ label, href }, index) => (
-        <LinkButton
-          key={index}
-          href={href}
-          label={label}
-          newTab
-          className="text-5xl"
-        />
-      ))}
-    </div>
-  );
+  category: string;
+  coverImg: string;
+  published: string;
 }
 
 export default function BlogHeader({
   title,
-  links,
-  description,
+  category,
+  coverImg,
+  published,
 }: BlogHeaderProps) {
   return (
     <div className="flex flex-col w-full">
-      <div className="flex flex-col items-center">
-        <h1 className="text-6xl">{title}</h1>
-        <Links links={links} />
+      <BackButton label={backButtonLabel} link={backButtonLink} />
+      <div className="flex flex-col w-full gap-8">
+        <div className="flex items-center justify-center w-full h-80 relative">
+          <Image src={coverImg} alt={`${title} logo`} fill />
+        </div>
+        <div className="flex flex-col items-center gap-8">
+          <h1 className="text-6xl">{title}</h1>
+          <div className="flex gap-4">
+            <div className="text-green font-bold">{category}</div>
+            <span>•</span>
+            <div>{published}</div>
+          </div>
+        </div>
       </div>
-      <ReactMarkdown
-        className="markdown pt-8"
-        linkTarget="_blank"
-        remarkPlugins={[remarkGfm]}
-      >
-        {description}
-      </ReactMarkdown>
     </div>
   );
 }
