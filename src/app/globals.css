@@ -93,3 +93,13 @@
   z-index: 9;
   /* Make sure the overlay is on top of everything else */
 }
+
+.markdown h1 {
+  color: var(--green);
+}
+
+.markdown a {
+  color: var(--green);
+  text-decoration: underline;
+  cursor: pointer;
+}

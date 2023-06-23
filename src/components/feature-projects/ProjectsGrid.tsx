@@ -7,6 +7,7 @@ import {
   FrankenotesLogo,
   AnonymessLogo,
   RenewedMoodLogo,
+  NoahNetworksLogo,
 } from "@/assets/project-logos";
 
 // Interfaces
@@ -35,6 +36,13 @@ const projects = [
     description:
       "AI-powered notebook - Revolutionize the way you capture, access, and manage your thoughts.",
     link: "/projects/frankenotes",
+  },
+  {
+    title: "Noah Networks",
+    category: "Web Application",
+    logo: NoahNetworksLogo,
+    description: "Personal website and blog.",
+    link: "/projects/noah-networks",
   },
   {
     title: "Renewed Mood",
