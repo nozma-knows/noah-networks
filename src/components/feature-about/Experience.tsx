@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 // Content
+const title = "Experience";
 const experiences = [
   {
     title: "tbh",
@@ -44,7 +45,7 @@ const experiences = [
 export default function Experience() {
   return (
     <div className="flex flex-col gap-4">
-      <h2>Experience</h2>
+      <h2>{title}</h2>
       <div className="flex flex-col gap-4">
         {experiences.map(
           ({ title, subtitle, start, end, link, points }, index) => (

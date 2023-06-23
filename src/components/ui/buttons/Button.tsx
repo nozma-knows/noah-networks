@@ -44,7 +44,7 @@ export default function Button({
         }}
       >
         {loading ? (
-          <PulseLoader color="#58335e" size={20} />
+          <PulseLoader color="#173F5F" size={20} />
         ) : (
           <div className="font-semibold">{label || defaultLabel}</div>
         )}
