@@ -5,6 +5,7 @@ import {
   ArePasswordsOutdated,
   ArduinoGettingStarted,
 } from "@/assets/blog-cover-images";
+import Link from "next/link";
 
 // Interfaces
 interface ProjectPreviewProps {
@@ -13,6 +14,7 @@ interface ProjectPreviewProps {
   coverImg: string;
   published: string;
   description: string;
+  link: string;
 }
 
 // Content
@@ -24,6 +26,7 @@ const projects = [
     published: "April 24, 2023",
     description:
       "Using magic links and social logins to make securely accessing web apps as easy as possible.",
+    link: "/blog/are-passwords-outdated",
   },
   {
     title: "Arduino - Getting Started",
@@ -31,6 +34,7 @@ const projects = [
     coverImg: ArduinoGettingStarted,
     published: "February 28, 2023",
     description: "Your first step to building anything!",
+    link: "/blog/arduino-getting-started",
   },
 ];
 
@@ -40,9 +44,13 @@ function BlogPreview({
   coverImg,
   published,
   description,
+  link,
 }: ProjectPreviewProps) {
   return (
-    <div className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer">
+    <Link
+      href={link}
+      className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
+    >
       <div className="flex items-center justify-center p-8 bg-blue w-full h-48 rounded-lg">
         <div className="w-full h-full relative">
           <Image src={coverImg} alt={`${title} logo`} fill />
@@ -56,7 +64,7 @@ function BlogPreview({
         <div className="text-2xl font-bold">{title}</div>
         <div>{description}</div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -64,7 +72,10 @@ export default function BlogGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
       {projects.map(
-        ({ title, category, coverImg, published, description }, index) => (
+        (
+          { title, category, coverImg, published, description, link },
+          index
+        ) => (
           <div key={index}>
             <BlogPreview
               title={title}
@@ -72,6 +83,7 @@ export default function BlogGrid() {
               coverImg={coverImg}
               published={published}
               description={description}
+              link={link}
             />
           </div>
         )
