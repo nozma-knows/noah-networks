@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/__generated__/graphql";
 import { KebabCase } from "@/components/utils/format";
+import { motion } from "framer-motion";
 
 interface ProjectPreviewProps {
   name: string;
@@ -55,30 +56,69 @@ interface ProjectPreviewProps {
 function ProjectPreview({ name, title }: ProjectPreviewProps) {
   const logoLocation = `${KebabCase(name)}-logo.svg`;
   return (
-    <Link
-      href={`/projects/${KebabCase(name)}`}
-      className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
+    // <Link
+    //   href={`/projects/${KebabCase(name)}`}
+    //   className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
+    // >
+    //   <div className="flex items-center justify-center p-8 bg-blue w-full h-48 rounded-lg">
+    //     <div className="w-full h-full relative">
+    //       <Image
+    //         src={`./project-logos/${logoLocation}`}
+    //         alt={`${title} logo`}
+    //         fill
+    //       />
+    //     </div>
+    //   </div>
+    //   <div className="p-4">
+    //     <h3>{name}</h3>
+    //     <div>{title}</div>
+    //   </div>
+    // </Link>
+    <motion.div
+      className="flex h-full rounded-lg cursor-pointer"
+      whileHover={{
+        scale: 1.02,
+      }}
+      whileTap={{
+        scale: 0.98,
+      }}
     >
-      <div className="flex items-center justify-center p-8 bg-blue w-full h-48 rounded-lg">
-        <div className="w-full h-full relative">
-          <Image
-            src={`./project-logos/${logoLocation}`}
-            alt={`${title} logo`}
-            fill
-          />
+      <Link
+        href={`/projects/${KebabCase(name)}`}
+        className="flex w-full h-full min-h-max cursor-pointer bg-gradient-to-r from-blue/60 to-blue/40 rounded-lg"
+      >
+        <div className="flex items-center justify-center p-8 w-48  bg-gradient-to-r from-blue/80 to-blue/60 rounded-l-lg">
+          <div className="w-full h-full relative">
+            <Image
+              src={`./project-logos/${logoLocation}`}
+              alt={`${title} logo`}
+              fill
+            />
+          </div>
         </div>
-      </div>
-      <div className="p-4">
-        <h3>{name}</h3>
-        <div>{title}</div>
-      </div>
-    </Link>
+        <div className="flex flex-col flex-1 p-4">
+          <h2 className="text-green font-bold">{name}</h2>
+          <div className="text-base">{title}</div>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
+    // <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
+    //   {projects.map(({ name, category, title }, index) => (
+    //     <div key={index}>
+    //       <ProjectPreview
+    //         name={name}
+    //         category={category || ""}
+    //         title={title || ""}
+    //       />
+    //     </div>
+    //   ))}
+    // </div>
+    <div className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4">
       {projects.map(({ name, category, title }, index) => (
         <div key={index}>
           <ProjectPreview
