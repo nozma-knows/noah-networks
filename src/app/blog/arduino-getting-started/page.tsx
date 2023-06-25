@@ -99,8 +99,8 @@ export default function Blog() {
         <Header
           title={title}
           category={category}
-          coverImg={coverImg}
-          published={published}
+          coverPhoto={coverImg}
+          createdAt={published}
         />
         <Content content={content} />
       </div>

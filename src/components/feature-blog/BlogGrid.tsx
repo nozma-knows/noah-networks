@@ -6,15 +6,18 @@ import {
   ArduinoGettingStarted,
 } from "@/assets/blog-cover-images";
 import Link from "next/link";
+import { Blog as BlogType } from "@/__generated__/graphql";
+import { FormatedDate } from "../utils/format";
+import { motion } from "framer-motion";
 
 // Interfaces
 interface ProjectPreviewProps {
-  title: string;
-  category: string;
-  coverImg: string;
-  published: string;
-  description: string;
-  link: string;
+  id: string;
+  title?: string;
+  category?: string;
+  coverPhoto?: string;
+  createdAt: string;
+  subtitle?: string;
 }
 
 // Content
@@ -39,51 +42,79 @@ const projects = [
 ];
 
 function BlogPreview({
+  id,
   title,
   category,
-  coverImg,
-  published,
-  description,
-  link,
+  coverPhoto,
+  createdAt,
+  subtitle,
 }: ProjectPreviewProps) {
   return (
-    <Link
-      href={link}
-      className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
+    // <Link
+    //   href={`/blog/${id}`}
+    //   className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
+    // >
+    //   <div className="flex items-center justify-center p-8 bg-blue w-48 h-48 rounded-lg">
+    //     <div className="w-full h-full aspect-auto relative">
+    //       <Image src={coverPhoto!} alt={`${title} logo`} fill />
+    //     </div>
+    //   </div>
+    //   <div className="flex flex-col p-4 gap-2">
+    //     <div className="flex items-center justify-between">
+    //       <div className="text-lg text-green font-bold">{category}</div>
+    //       <div className="text-sm">{published}</div>
+    //     </div>
+    //     <div className="text-2xl font-bold">{title}</div>
+    //     <div>{subtitle}</div>
+    //   </div>
+    // </Link>
+    <motion.div
+      className="flex p-4 rounded-lg cursor-pointer"
+      whileHover={{
+        scale: 1.02,
+      }}
+      whileTap={{
+        scale: 0.98,
+      }}
     >
-      <div className="flex items-center justify-center p-8 bg-blue w-full h-48 rounded-lg">
-        <div className="w-full h-full relative">
-          <Image src={coverImg} alt={`${title} logo`} fill />
+      <Link href={`/blog/${id}`} className="flex w-full">
+        <div className="flex items-center justify-center w-48 h-48 rounded-lg">
+          <div className="flex w-full h-full aspect-auto relative">
+            <Image
+              src={coverPhoto!}
+              alt={`${title} logo`}
+              fill
+              className="rounded-lg"
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col p-4 gap-2">
-        <div className="flex items-center justify-between">
-          <div className="text-lg text-green font-bold">{category}</div>
-          <div className="text-sm">{published}</div>
+        <div className="flex flex-1 flex-col p-4 gap-2">
+          <div className="flex items-center justify-between">
+            <div className="text-lg text-green font-bold">{category}</div>
+            <div className="text-sm">{FormatedDate(createdAt)}</div>
+          </div>
+          <div className="text-2xl font-bold">{title}</div>
+          <div>{subtitle}</div>
         </div>
-        <div className="text-2xl font-bold">{title}</div>
-        <div>{description}</div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }
 
-export default function BlogGrid() {
+export default function BlogGrid({ blogs }: { blogs: BlogType[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
-      {projects.map(
-        (
-          { title, category, coverImg, published, description, link },
-          index
-        ) => (
+    // <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
+    <div className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4">
+      {blogs.map(
+        ({ title, category, coverPhoto, createdAt, subtitle, id }, index) => (
           <div key={index}>
             <BlogPreview
-              title={title}
-              category={category}
-              coverImg={coverImg}
-              published={published}
-              description={description}
-              link={link}
+              id={id}
+              title={title || undefined}
+              category={category || undefined}
+              coverPhoto={coverPhoto || undefined}
+              createdAt={createdAt}
+              subtitle={subtitle || undefined}
             />
           </div>
         )
