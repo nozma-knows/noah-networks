@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 // Content
@@ -46,7 +49,14 @@ export default function Experience() {
   return (
     <div className="flex flex-col gap-4">
       <h2>{title}</h2>
-      <div className="flex flex-col gap-4">
+      <motion.div
+        className="flex flex-col gap-4"
+        initial={{ opacity: 0, x: 0, y: 20 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{
+          duration: 1,
+        }}
+      >
         {experiences.map(
           ({ title, subtitle, start, end, link, points }, index) => (
             <div key={index} className="flex flex-col gap-2">
@@ -72,7 +82,7 @@ export default function Experience() {
             </div>
           )
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

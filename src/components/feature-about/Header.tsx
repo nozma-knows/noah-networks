@@ -1,4 +1,7 @@
+"use client";
+
 import LinkButton from "@/components/ui/buttons/LinkButton";
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 // About Me Content
@@ -26,11 +29,18 @@ const links = [
 
 function AboutMe() {
   return (
-    <div className="flex flex-col gap-4 text-xl">
+    <motion.div
+      className="flex flex-col gap-4 text-xl"
+      initial={{ opacity: 0, x: 0, y: 20 }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
+      transition={{
+        duration: 1,
+      }}
+    >
       {aboutBlurbs.map((blurb, index) => (
         <div key={index}>{blurb}</div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 
