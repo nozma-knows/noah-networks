@@ -25,7 +25,7 @@ export default async function Projects() {
     <Page>
       <div className="flex flex-col w-full h-full gap-8">
         <h1>{title}</h1>
-        <ProjectsGrid projects={data.projects} />
+        {/* <ProjectsGrid projects={data.projects} /> */}
       </div>
     </Page>
   );
