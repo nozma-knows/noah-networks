@@ -10,6 +10,7 @@ interface ProjectPreviewProps {
   name: string;
   category: string;
   title: string;
+  logo: string;
 }
 
 // Content
@@ -53,7 +54,7 @@ interface ProjectPreviewProps {
 //   },
 // ];
 
-function ProjectPreview({ name, title }: ProjectPreviewProps) {
+function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
   const logoLocation = `${KebabCase(name)}-logo.svg`;
 
   return (
@@ -73,7 +74,8 @@ function ProjectPreview({ name, title }: ProjectPreviewProps) {
         <div className="flex items-center justify-center p-8 w-48  bg-gradient-to-r from-blue/80 to-blue/60 rounded-l-lg">
           <div className="w-full h-full relative">
             <Image
-              src={`./project-logos/${logoLocation}`}
+              // src={`./project-logos/${logoLocation}`}
+              src={logo}
               alt={`${title} logo`}
               fill
             />
@@ -91,12 +93,13 @@ function ProjectPreview({ name, title }: ProjectPreviewProps) {
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   return (
     <div className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4">
-      {projects.map(({ name, category, title }, index) => (
+      {projects.map(({ name, category, title, logo }, index) => (
         <div key={index}>
           <ProjectPreview
             name={name}
             category={category || ""}
-            title={title || ""}
+            title={title}
+            logo={logo}
           />
         </div>
       ))}
