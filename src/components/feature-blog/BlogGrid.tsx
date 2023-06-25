@@ -102,10 +102,13 @@ function BlogPreview({
 }
 
 export default function BlogGrid({ blogs }: { blogs: BlogType[] }) {
+  const sortedBlogs = blogs.sort(
+    (a, b) => Number(b.createdAt) - Number(a.createdAt)
+  );
   return (
     // <div className="grid grid-cols-1 sm:grid-cols-2 grid-flow-row auto-rows-fr gap-4">
     <div className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4">
-      {blogs.map(
+      {sortedBlogs.map(
         ({ title, category, coverPhoto, createdAt, subtitle, id }, index) => (
           <div key={index}>
             <BlogPreview

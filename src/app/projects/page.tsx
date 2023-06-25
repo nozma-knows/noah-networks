@@ -28,11 +28,3 @@ export default async function Projects() {
     </Page>
   );
 }
-
-// export default function Projects() {
-//   return (
-//     <Page>
-//       <div>Projects</div>
-//     </Page>
-//   );
-// }
