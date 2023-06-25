@@ -33,7 +33,7 @@ function Message() {
 export default function Home() {
   return (
     <Page>
-      <div className="flex flex-col w-full h-full justify-center items-center gap-4">
+      <div className="flex flex-col w-full h-full justify-center items-center gap-8">
         <Message />
         <motion.div
           initial={{ opacity: 0, y: 150 }}

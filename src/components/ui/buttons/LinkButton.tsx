@@ -42,7 +42,7 @@ export default function LinkButton({
         href={href}
         {...(newTab ? { target: "_blank" } : {})}
       >
-        <div className={`${className} button`}>{label || "Link"}</div>
+        <div className={`${className} font-bold`}>{label || "Link"}</div>
       </Link>
     </motion.div>
   );
