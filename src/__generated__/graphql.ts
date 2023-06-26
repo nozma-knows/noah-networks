@@ -116,7 +116,7 @@ export type Project = {
   author: User;
   authorId: Scalars['String'];
   category?: Maybe<Scalars['String']>;
-  content?: Maybe<Array<Maybe<Scalars['String']>>>;
+  content: Array<Scalars['String']>;
   createdAt: Scalars['String'];
   github?: Maybe<Scalars['String']>;
   id: Scalars['ID'];

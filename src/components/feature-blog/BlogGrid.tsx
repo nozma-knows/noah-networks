@@ -11,7 +11,7 @@ import { FormatedDate } from "../utils/format";
 import { motion } from "framer-motion";
 
 // Interfaces
-interface ProjectPreviewProps {
+interface BlogPreviewProps {
   id: string;
   title?: string;
   category?: string;
@@ -21,25 +21,25 @@ interface ProjectPreviewProps {
 }
 
 // Content
-const projects = [
-  {
-    title: "Are passwords outdated?",
-    category: "Technology",
-    coverImg: ArePasswordsOutdated,
-    published: "April 24, 2023",
-    description:
-      "Using magic links and social logins to make securely accessing web apps as easy as possible.",
-    link: "/blog/are-passwords-outdated",
-  },
-  {
-    title: "Arduino - Getting Started",
-    category: "Technology",
-    coverImg: ArduinoGettingStarted,
-    published: "February 28, 2023",
-    description: "Your first step to building anything!",
-    link: "/blog/arduino-getting-started",
-  },
-];
+// const projects = [
+//   {
+//     title: "Are passwords outdated?",
+//     category: "Technology",
+//     coverImg: ArePasswordsOutdated,
+//     published: "April 24, 2023",
+//     description:
+//       "Using magic links and social logins to make securely accessing web apps as easy as possible.",
+//     link: "/blog/are-passwords-outdated",
+//   },
+//   {
+//     title: "Arduino - Getting Started",
+//     category: "Technology",
+//     coverImg: ArduinoGettingStarted,
+//     published: "February 28, 2023",
+//     description: "Your first step to building anything!",
+//     link: "/blog/arduino-getting-started",
+//   },
+// ];
 
 function BlogPreview({
   id,
@@ -48,26 +48,8 @@ function BlogPreview({
   coverPhoto,
   createdAt,
   subtitle,
-}: ProjectPreviewProps) {
+}: BlogPreviewProps) {
   return (
-    // <Link
-    //   href={`/blog/${id}`}
-    //   className="flex flex-col w-full h-full min-h-max bg-white/20 rounded-lg border-2 border-transparent hover:border-white cursor-pointer"
-    // >
-    //   <div className="flex items-center justify-center p-8 bg-blue w-48 h-48 rounded-lg">
-    //     <div className="w-full h-full aspect-auto relative">
-    //       <Image src={coverPhoto!} alt={`${title} logo`} fill />
-    //     </div>
-    //   </div>
-    //   <div className="flex flex-col p-4 gap-2">
-    //     <div className="flex items-center justify-between">
-    //       <div className="text-lg text-green font-bold">{category}</div>
-    //       <div className="text-sm">{published}</div>
-    //     </div>
-    //     <div className="text-2xl font-bold">{title}</div>
-    //     <div>{subtitle}</div>
-    //   </div>
-    // </Link>
     <motion.div
       className="flex p-4 rounded-lg cursor-pointer"
       whileHover={{

@@ -7,6 +7,7 @@ import { KebabCase } from "@/components/utils/format";
 import { motion } from "framer-motion";
 
 interface ProjectPreviewProps {
+  id: string;
   name: string;
   category: string;
   title: string;
@@ -54,7 +55,7 @@ interface ProjectPreviewProps {
 //   },
 // ];
 
-function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
+function ProjectPreview({ id, name, title, logo }: ProjectPreviewProps) {
   return (
     <motion.div
       className="flex h-full rounded-lg cursor-pointer"
@@ -66,7 +67,7 @@ function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
       }}
     >
       <Link
-        href={`/projects/${KebabCase(name)}`}
+        href={`/projects/${id}`}
         className="flex w-full h-full min-h-max cursor-pointer bg-gradient-to-r from-blue/60 to-blue/40 rounded-lg"
       >
         <div className="flex items-center justify-center p-8 w-48  bg-gradient-to-r from-blue/80 to-blue/60 rounded-l-lg">
@@ -84,6 +85,7 @@ function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
 }
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
+  console.log("projects: ", projects);
   const containerAnimation = {
     hidden: { opacity: 0 },
     show: {
@@ -107,9 +109,10 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       initial="hidden"
       animate="show"
     >
-      {projects.map(({ name, category, title, logo }, index) => (
+      {projects.map(({ id, name, category, title, logo }, index) => (
         <motion.div key={index} variants={projectAnimation}>
           <ProjectPreview
+            id={id}
             name={name}
             category={category || ""}
             title={title}

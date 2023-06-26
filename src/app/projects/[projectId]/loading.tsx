@@ -1,9 +1,9 @@
 import Page from "@/components/ui/pages/Page";
 
-export default function Project() {
+export default function Loading() {
   return (
     <Page>
-      <div>Renewed Mood</div>
+      <div>Loading...</div>
     </Page>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BackButton from "@/components/ui/buttons/BackButton";
 import { FormatedDate } from "@/components/utils/format";
+import { motion } from "framer-motion";
 
 // Content
 const backButtonLabel = `Back to blog`;
@@ -32,7 +33,12 @@ export default function BlogHeader({
   return (
     <div className="flex flex-col w-full">
       <BackButton label={backButtonLabel} link={backButtonLink} />
-      <div className="flex flex-col w-full gap-8">
+      <motion.div
+        className="flex flex-col w-full gap-8"
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 30, delay: 0 }}
+      >
         <div className="flex items-center justify-center w-full h-80 aspect-square relative">
           <Image src={coverPhoto} alt={`${title} logo`} fill />
         </div>
@@ -44,7 +50,7 @@ export default function BlogHeader({
             <div>{FormatedDate(createdAt)}</div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

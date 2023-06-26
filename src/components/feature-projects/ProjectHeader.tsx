@@ -1,61 +1,65 @@
+"use client";
+
 import LinkButton from "@/components/ui/buttons/LinkButton";
 import BackButton from "@/components/ui/buttons/BackButton";
-import Link from "next/link";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { FaGithub, FaLink } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 // Content
 const backButtonLabel = `Back to Projects`;
 const backButtonLink = `/projects`;
 
-interface Link {
-  label: JSX.Element;
-  href: string;
-}
 interface LinksProps {
-  links: Link[];
+  github: string | undefined;
+  website: string | undefined;
 }
 interface ProjectHeaderProps {
-  title: string;
-  links: Link[];
-  description: string;
+  name: string;
+  github: string | undefined;
+  website: string | undefined;
 }
 
-function Links({ links }: LinksProps) {
+function Links({ github, website }: LinksProps) {
   return (
     <div className="flex gap-12 pt-8 justify-center">
-      {links.map(({ label, href }, index) => (
+      {github && (
         <LinkButton
-          key={index}
-          href={href}
-          label={label}
+          href={github}
+          label={<FaGithub />}
           newTab
           className="text-5xl"
         />
-      ))}
+      )}
+      {website && (
+        <LinkButton
+          href={website}
+          label={<FaLink />}
+          newTab
+          className="text-5xl"
+        />
+      )}
     </div>
   );
 }
 
 export default function ProjectHeader({
-  title,
-  links,
-  description,
+  name,
+  github,
+  website,
 }: ProjectHeaderProps) {
+  console.log("name: ", name);
   return (
     <div className="flex flex-col w-full">
       <BackButton label={backButtonLabel} link={backButtonLink} />
-      <div className="flex flex-col items-center">
-        <h1 className="text-6xl">{title}</h1>
-        <Links links={links} />
-      </div>
-      <ReactMarkdown
-        className="markdown pt-8"
-        linkTarget="_blank"
-        remarkPlugins={[remarkGfm]}
+      <motion.div
+        className="flex flex-col items-center"
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 30, delay: 0 }}
       >
-        {description}
-      </ReactMarkdown>
+        <h1 className="text-6xl">{name}</h1>
+        <Links github={github} website={website} />
+      </motion.div>
     </div>
   );
 }
