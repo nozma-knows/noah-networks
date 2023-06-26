@@ -3,6 +3,24 @@ import { Header, Content } from "@/components/feature-projects";
 import { Project as ProjectType } from "@/__generated__/graphql";
 import { getClient } from "@/lib/client";
 import { ProjectQuery } from "@/components/graph";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { projectId: string };
+}): Promise<Metadata> {
+  const { data }: { data: { project: ProjectType } } = await getClient().query({
+    query: ProjectQuery,
+    variables: {
+      id: params.projectId,
+    },
+  });
+
+  return {
+    title: `Noah Networks | ${data.project.name}`,
+  };
+}
 
 export default async function Project({
   params,

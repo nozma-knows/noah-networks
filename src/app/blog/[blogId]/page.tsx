@@ -3,8 +3,24 @@ import { Blog as BlogType } from "@/__generated__/graphql";
 import { getClient } from "@/lib/client";
 import { BlogQuery } from "@/components/graph";
 import { Header, Content } from "@/components/feature-blog";
+import { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
+export async function generateMetadata({
+  params,
+}: {
+  params: { blogId: string };
+}): Promise<Metadata> {
+  const { data }: { data: { blog: BlogType } } = await getClient().query({
+    query: BlogQuery,
+    variables: {
+      id: params.blogId,
+    },
+  });
+
+  return {
+    title: `Noah Networks | ${data.blog.title}`,
+  };
+}
 
 export default async function Blog({ params }: { params: { blogId: string } }) {
   const { data }: { data: { blog: BlogType } } = await getClient().query({
