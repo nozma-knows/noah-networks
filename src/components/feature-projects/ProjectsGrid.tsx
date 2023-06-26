@@ -55,8 +55,6 @@ interface ProjectPreviewProps {
 // ];
 
 function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
-  const logoLocation = `${KebabCase(name)}-logo.svg`;
-
   return (
     <motion.div
       className="flex h-full rounded-lg cursor-pointer"
@@ -73,12 +71,7 @@ function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
       >
         <div className="flex items-center justify-center p-8 w-48  bg-gradient-to-r from-blue/80 to-blue/60 rounded-l-lg">
           <div className="w-full h-full relative">
-            <Image
-              // src={`./project-logos/${logoLocation}`}
-              src={logo}
-              alt={`${title} logo`}
-              fill
-            />
+            <Image src={logo} alt={`${title} logo`} fill />
           </div>
         </div>
         <div className="flex flex-col flex-1 p-4">
@@ -91,18 +84,39 @@ function ProjectPreview({ name, title, logo }: ProjectPreviewProps) {
 }
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
+  const containerAnimation = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0,
+      },
+    },
+  };
+
+  const projectAnimation = {
+    hidden: { opacity: 0, x: 0, y: 20 },
+    show: { opacity: 1, x: 0, y: 0 },
+  };
+
   return (
-    <div className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4">
+    <motion.div
+      className="grid grid-cols-1 grid-flow-row auto-rows-fr gap-4"
+      variants={containerAnimation}
+      initial="hidden"
+      animate="show"
+    >
       {projects.map(({ name, category, title, logo }, index) => (
-        <div key={index}>
+        <motion.div key={index} variants={projectAnimation}>
           <ProjectPreview
             name={name}
             category={category || ""}
             title={title}
             logo={logo}
           />
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }
