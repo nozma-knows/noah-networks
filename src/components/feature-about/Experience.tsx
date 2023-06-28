@@ -7,15 +7,39 @@ import Link from "next/link";
 const title = "Experience";
 const experiences = [
   {
-    title: "tbh",
-    subtitle: "Full-stack Engineer",
-    start: "Jan. 2022",
+    title: "Rabbit Hole",
+    subtitle: "Full-stack React Developer",
+    start: "Feb. 2023",
     end: "Present",
+    link: "https://www.rabbit-hole.dev/",
+    points: [
+      `Tech Stack / Libraries - TypeScript, NextJS, TailwindCSS, GraphQL, NodeJS, Express, Postgres, Prisma, Docker, Vercel, LangChain, OpenAI, Pinecone, MUI, React-Hook-Form`,
+      `Developing a cutting-edge AI-powered web app capable of generating tailored interactive learning resources.`,
+      `Design a modern website and manage a Slack channel for supporting and engaging with users.`,
+      `Work through validation phases using the SPRINT methodology.`,
+    ],
+  },
+  {
+    title: "tbh",
+    subtitle: "Full-stack React Developer",
+    start: "Jan. 2022",
+    end: "Feb. 2023",
     link: "https://www.tbh.us/",
     points: [
-      `Designed and built our user facing web application for connecting users to live coaches, tools for requesting sessions and interacting with content`,
-      `Created a web application for our operations team to help facilitate connecting users with coaches, data analysis and managing communications, notifications and content`,
-      `Built a web application for admins to get real-time data on users details, participation and feedback`,
+      `Tech Stack / Libraries - JavaScript, TypeScript, React, NextJS, REST, Redux, TailwindCSS, NodeJS, Express, NestJS, Docker, AWS, Zoom API, Stripe API, Google APIs, MUI, React-Hook-Form`,
+      `Designed, built, and maintained a user-facing web application for connecting 1000+ students to live therapists, interactive content and like-minded students. Lead to a 20% increase in reported well being for users.`,
+      `Implemented a web application for administrators, providing real-time insights into user details, participation, and feedback. This tool directly resulted in four new contracts being signed within the next two months.`,
+    ],
+  },
+  {
+    title: "Renewed Mood",
+    subtitle: "Full Stack React Native Developer",
+    start: "Jun. 2021",
+    end: "Jan. 2022",
+    points: [
+      `Tech Stack / Libraries - JavaScript, React Native, REST, Redux, NodeJS, Express, AWS, MUI, Formik`,
+      `Created a multimodal journaling mobile app capable of video, audio and text input with built-in features for mood tracking and text-to-speech capability.`,
+      `Managed a Discord channel for engaging with users.`,
     ],
   },
   {
@@ -25,11 +49,10 @@ const experiences = [
     end: "May 2021",
     link: "https://www.ti.com/",
     points: [
-      `Supported customers throughout their entire design cycle (circuit design, part selction, pcb design, testing)`,
-      `Provided customers with solutions to maximize their design care-abouts (reduce cost, higher performance, smaller solutions)`,
+      `Provided technical support to six tier one automotive supplier with applications including electric and powertrain systems, advanced driver assistance systems (ADAS) and body electronics.`,
+      `Leveraged TI's portfolio and collateral to provide customers with solutions that improved their end equipment size, cost, and reliability.`,
       `Reviewed / Debugged schematics, layouts, and prototypes`,
-      `Designed PCBs with Altium`,
-      `Used SPICE simulation software to design and integrate analog circuits`,
+      `Called on and supported 25+ accounts covering a wide range of applications including enterprise computing and storage, wireless infrastructure, factory automation, medical devices and personal electronics.`,
     ],
   },
   {
@@ -62,9 +85,13 @@ export default function Experience() {
             <div key={index} className="flex flex-col gap-2">
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <Link href={link} target="_blank">
+                  {link ? (
+                    <Link href={link} target="_blank">
+                      <h3>{title}</h3>
+                    </Link>
+                  ) : (
                     <h3>{title}</h3>
-                  </Link>
+                  )}
                   <span>•</span>
                   <div className="italic">{subtitle}</div>
                 </div>

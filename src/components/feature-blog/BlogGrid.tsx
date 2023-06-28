@@ -60,7 +60,7 @@ function BlogPreview({
       }}
     >
       <Link href={`/blog/${id}`} className="flex w-full">
-        <div className="flex items-center justify-center w-48 h-48 rounded-lg">
+        <div className="flex items-center justify-center w-[240px] h-[180px] rounded-lg">
           <div className="flex w-full h-full aspect-auto relative">
             <Image
               src={coverPhoto!}

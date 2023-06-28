@@ -39,7 +39,7 @@ export default function BlogHeader({
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 30, delay: 0 }}
       >
-        <div className="flex items-center justify-center w-full h-80 aspect-square relative">
+        <div className="flex items-center justify-center w-full aspect-[2/1] relative">
           <Image src={coverPhoto} alt={`${title} logo`} fill />
         </div>
         <div className="flex flex-col items-center gap-8">
