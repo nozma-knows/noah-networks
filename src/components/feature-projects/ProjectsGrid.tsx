@@ -85,7 +85,10 @@ function ProjectPreview({ id, name, title, logo }: ProjectPreviewProps) {
 }
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
-  console.log("projects: ", projects);
+  const sortedProjects = projects.sort(
+    (a, b) => Number(b.createdAt) - Number(a.createdAt)
+  );
+
   const containerAnimation = {
     hidden: { opacity: 0 },
     show: {
@@ -109,7 +112,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       initial="hidden"
       animate="show"
     >
-      {projects.map(({ id, name, category, title, logo }, index) => (
+      {sortedProjects.map(({ id, name, category, title, logo }, index) => (
         <motion.div key={index} variants={projectAnimation}>
           <ProjectPreview
             id={id}
