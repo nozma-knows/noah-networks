@@ -36,10 +36,6 @@ export default function Footer() {
   const [showInput, setShowInput] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
 
-  useEffect(() => {
-    console.log("password: ", password);
-  }, [password]);
-
   return (
     <div className="flex w-full justify-center items-center font-bold px-6 pb-4 self-end relative">
       {showInput && (

@@ -34,12 +34,13 @@ export default async function Project({
     },
   });
 
-  const { name, github, website, content } = data.project;
+  const { logo, name, github, website, content } = data.project;
 
   return (
     <Page>
       <div className="flex flex-col w-full h-full items-center gap-8">
         <Header
+          logo={logo}
           name={name}
           github={github || undefined}
           website={website || undefined}

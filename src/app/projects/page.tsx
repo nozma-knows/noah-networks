@@ -19,8 +19,6 @@ export default async function Projects() {
     query: ProjectsQuery,
   });
 
-  console.log("data: ", data);
-
   return (
     <Page>
       <div className="flex flex-col w-full h-full gap-8">

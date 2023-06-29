@@ -57,7 +57,7 @@
     display: inline;
   }
 
-  code {
+  /* code {
     display: flex;
     flex-direction: column;
     margin: 1rem 2rem;
@@ -66,7 +66,14 @@
     line-height: 1rem;
     border-left: 10px solid #e3d1e6;
     color: #d9f6f5;
+  } */
+
+  code {
+    /* padding: 1rem; */
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.4)
   }
+
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
@@ -97,6 +104,7 @@
 .markdown h1 {
   color: var(--green);
 }
+
 
 .markdown a {
   color: var(--green);
