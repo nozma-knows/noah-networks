@@ -17,6 +17,11 @@ export default async function Projects() {
   // Grab projects
   const { data }: { data: { projects: Project[] } } = await getClient().query({
     query: ProjectsQuery,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
   });
 
   return (

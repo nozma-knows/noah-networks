@@ -32,6 +32,11 @@ export default async function Project({
     variables: {
       id: params.projectId,
     },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
   });
 
   const { logo, name, github, website, content } = data.project;
