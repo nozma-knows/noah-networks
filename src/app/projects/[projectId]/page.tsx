@@ -22,6 +22,8 @@ export async function generateMetadata({
   };
 }
 
+export const revalidate = 60; // revalidate this page every 60 seconds
+
 export default async function Project({
   params,
 }: {
@@ -31,11 +33,6 @@ export default async function Project({
     query: ProjectQuery,
     variables: {
       id: params.projectId,
-    },
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
     },
   });
 
