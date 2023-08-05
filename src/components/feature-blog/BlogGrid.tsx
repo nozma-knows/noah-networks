@@ -60,7 +60,7 @@ function BlogPreview({
       }}
     >
       <Link href={`/blog/${id}`} className="flex w-full">
-        <div className="flex items-center justify-center w-[240px] h-[180px] rounded-lg">
+        {/* <div className="flex items-center justify-center w-[240px] h-[180px] rounded-lg">
           <div className="flex w-full h-full aspect-auto relative">
             <Image
               src={coverPhoto!}
@@ -69,7 +69,7 @@ function BlogPreview({
               className="rounded-lg"
             />
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-1 flex-col p-4 gap-2">
           <div className="flex items-center justify-between">
             <div className="text-lg text-green font-bold">{category}</div>
